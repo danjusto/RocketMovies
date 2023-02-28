@@ -1,7 +1,6 @@
 import { FiPlus } from "react-icons/fi";
-import { Container, Content, ResumeSection } from "./style";
+import { Container, Content, ResumeSection, Button } from "./style";
 import { Header } from "../../components/Header";
-import { Button } from "../../components/Button";
 import { Tag } from "../../components/Tag";
 import { Stars } from "../../components/Stars"
 
@@ -13,7 +12,10 @@ export function Home() {
                 <Content>
                     <div className="div-head">
                         <h1>Meus filmes</h1>
-                        <Button to="/new" icon={FiPlus} title="Adicionar filme"/>
+                        <Button to="/new">
+                            <FiPlus/>
+                            Adicionar filme
+                        </Button>
                     </div>
                     <ResumeSection>
                         <div>

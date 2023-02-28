@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
     width: 100%;
@@ -28,22 +29,6 @@ export const Content = styled.div`
             font-weight: 400;
             font-size: 32px;
             line-height: 42px;
-        }
-
-        a {
-            width: 207px;
-            height: 48px;
-            font-weight: 400;
-            color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-
-            svg {
-                height: 20px;
-                width: 20px;
-            }
         }
     }
 `;
@@ -98,5 +83,26 @@ export const ResumeSection = styled.div`
             background-color: ${({ theme }) => theme.COLORS.BACKGROUND_600};
             padding: 5px 16px;
         }
+    }
+`;
+
+export const Button = styled(Link)`
+    width: 207px;
+    height: 48px;
+    font-weight: 400;
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    background-color: ${({ theme }) => theme.COLORS.PINK};
+
+    svg {
+        height: 20px;
+        width: 20px;
+        color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
     }
 `;

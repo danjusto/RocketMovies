@@ -26,17 +26,8 @@ export const Content = styled.div`
         align-items: center;
         gap: 40px;
         margin: 40px 0;
-    }
-
-    div:nth-child(7) {
-
-        a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        a:nth-child(1) {
+        
+        button:nth-child(1) {
             background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
             color: ${({ theme }) => theme.COLORS.PINK};
         }
