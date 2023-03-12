@@ -1,3 +1,6 @@
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { api } from "../../services/api";
 import { FiPlus } from "react-icons/fi";
 import { Container, Content, ResumeSection, Button } from "./style";
 import { Header } from "../../components/Header";
@@ -5,9 +8,25 @@ import { Tag } from "../../components/Tag";
 import { Stars } from "../../components/Stars"
 
 export function Home() {
+    const [search, setSearch] = useState("");
+    const [notes, setNotes] = useState([]);
+    const navigate = useNavigate();
+
+    function handlePreview(id) {
+        navigate(`/preview/${id}`)
+    }
+
+    useEffect(() => {
+        async function fetchNotes() {
+            const response = await api.get(`/notes?title=${search}`);
+            setNotes(response.data);
+        };
+        fetchNotes();
+    }, [search]);
+
     return (
         <Container>
-            <Header/>
+            <Header func={setSearch} />
             <main>
                 <Content>
                     <div className="div-head">
@@ -17,34 +36,38 @@ export function Home() {
                             Adicionar filme
                         </Button>
                     </div>
-                    <ResumeSection>
-                        <div>
-                            <h2>Interstellar</h2>
-                            <Stars />
-                        </div>
-                        <p>
-                            Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" é uma inteligência desconhecida que está enviando mensagens codificadas através de radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação secreta da NASA liderada pelo professor John Brand. O
-                        </p>
-                        <div className="tags">
-                            <Tag title="Ficção Científica"/>
-                            <Tag title="Drama"/>
-                            <Tag title="Família"/>
-                        </div>
-                    </ResumeSection>
-                    <ResumeSection>
-                        <div>
-                            <h2>Interstellar</h2>
-                            <Stars />
-                        </div>
-                        <p>
-                            Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" é uma inteligência desconhecida que está enviando mensagens codificadas através de radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação secreta da NASA liderada pelo professor John Brand. O
-                        </p>
-                        <div className="tags">
-                            <Tag title="Ficção Científica"/>
-                            <Tag title="Drama"/>
-                            <Tag title="Família"/>
-                        </div>
-                    </ResumeSection>
+                    {
+                        notes.map(note => (
+                            <ResumeSection 
+                                key={String(note.id)}
+                                onClick={() => handlePreview(note.id)}
+                            >
+                                <div>
+                                    {
+                                        <h2>{note.title}</h2>
+                                    }
+                                    <Stars rating={note.rating} />
+                                </div>
+                                {
+                                    note.description &&
+                                    <p>{note.description}</p>
+                                }
+                                {
+                                    note.tags &&
+                                    <div className="tags">
+                                        {
+                                            note.tags.map(tag => (
+                                                <Tag 
+                                                    key={String(tag.id)} 
+                                                    title={tag.name}
+                                                />)
+                                            )
+                                        }
+                                    </div>
+                                }
+                            </ResumeSection>)
+                        )
+                    }
                 </Content>
             </main>
         </Container>

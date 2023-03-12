@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ClockImg from "../../assets/clock.png"
-import StarF from "../../assets/StarFill.svg"
-import StarE from "../../assets/StarEmpty.svg"
+import StarF from "../../assets/starfill.svg"
+import StarE from "../../assets/starempty.svg"
 
 export const Container = styled.div`
     width: 100%;
@@ -31,6 +31,13 @@ export const Content = styled.div`
         align-items: center;
         gap: 20px;
 
+        button:nth-child(1){
+            width: 50%;
+            margin: 0 auto;
+            color: ${({ theme }) => theme.COLORS.PINK};
+            background: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+        }
+        
         h1 {
             font-weight: 500;
             font-size: 36px;
@@ -49,7 +56,7 @@ export const Content = styled.div`
     }
 
     > p {
-        margin-top: 40px;
+        margin: 40px 0 60px;
         font-weight: 400;
         line-height: 21px;
         text-align: justify;
@@ -71,8 +78,8 @@ export const Created = styled.div`
         align-items: center;
 
         img {
-            height: 16px;
-            width: 16px;
+            height: 20px;
+            width: 20px;
             border-radius: 50%;
             border: 1px solid ${({ theme }) => theme.COLORS.SEPARATOR};
         }

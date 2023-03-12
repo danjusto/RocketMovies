@@ -39,7 +39,7 @@ export const Content = styled.form`
         margin-bottom: 24px;
     }
 
-    > a {
+    > button {
         margin-top: 16px;
         justify-content: center;
         align-items: center;

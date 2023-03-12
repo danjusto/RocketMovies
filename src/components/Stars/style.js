@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import StarF from "../../assets/StarFill.svg"
-import StarE from "../../assets/StarEmpty.svg"
+import StarF from "../../assets/starfill.svg"
+import StarE from "../../assets/starempty.svg"
 
 export const Container = styled.div`
     display: flex;

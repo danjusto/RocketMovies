@@ -27,9 +27,9 @@ export const Content = styled.div`
         gap: 40px;
         margin: 40px 0;
         
-        button:nth-child(1) {
-            background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
-            color: ${({ theme }) => theme.COLORS.PINK};
+        button:nth-child(1){
+            width: 50%;
+            margin: 0 auto;
         }
     }
 
@@ -43,7 +43,7 @@ export const Content = styled.div`
 
     > .tags {
         width: 100%;
-        height: 88px;
+        min-height: 88px;
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
         padding: 16px;
         flex-wrap: wrap;

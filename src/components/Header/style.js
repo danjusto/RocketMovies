@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -45,11 +46,13 @@ export const Profile = styled.div`
             background: transparent;
         }
     }
+`;
 
+export const Avatar = styled(Link)`
     > img {
         width: 64px;
         height: 64px;
         border-radius: 50%;
         border: 1px solid ${({ theme }) => theme.COLORS.SEPARATOR};
     }
-`;
+`

@@ -1,19 +1,42 @@
-import { Container, Profile } from "./style";
+import { useEffect, useState} from "react";
+import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
+import { api } from "../../services/api";
+import avatarPlaceholder from "../../assets/profile_icon.svg";
+import { Container, Profile, Avatar } from "./style";
 import { Input } from "../Input";
 
-export function Header() {
+
+export function Header({func}) {
+
+    const { signOut, user } = useAuth();
+    const navigate = useNavigate();
+
+    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
+
+    function handleSignOut() {
+        navigate("/");
+        signOut();
+    }
+
     return (
         <Container>
             <h1>
                 RocketMovies
             </h1>
-            <Input type="text" placeholder="Pesquisar pelo título" />
+            <Input 
+                type="text" 
+                placeholder="Pesquisar pelo título" 
+                onChange={(e) => func(e.target.value)}
+            />
             <Profile>
                 <div>
-                    <strong>Rodrigo Gonçalves</strong>
-                    <button>sair</button>
+                    <strong>{user.name}</strong>
+                    <button onClick={handleSignOut}>sair</button>
                 </div>
-                <img src="http://github.com/rodrigorgtic.png" alt="Foto do usuário" />
+                <Avatar to="/profile" >
+                    <img src={avatarUrl} alt={user.name} />
+                </Avatar>
             </Profile>
         </Container>
     );

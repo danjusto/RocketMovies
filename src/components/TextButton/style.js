@@ -9,4 +9,5 @@ export const Container = styled(Link)`
     align-items: center;
     gap: 8px;
     margin-bottom: 24px;
+    width: fit-content;
 `;

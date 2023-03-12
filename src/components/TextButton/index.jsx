@@ -1,10 +1,9 @@
 import { Container } from "./style";
 
-export function TextButton({ title, isActive = false, icon: Icon, ...rest }) {
+export function TextButton({ title, icon: Icon, ...rest }) {
     return (
         <Container
             type="button"
-            isActive={isActive}
             {...rest}
         >
             {Icon && <Icon size={20}/>}

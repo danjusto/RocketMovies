@@ -33,13 +33,14 @@ export const Content = styled.div`
     }
 `;
 
-export const ResumeSection = styled.div`
+export const ResumeSection = styled.button`
     width: 1137px;
     height: 223px;
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_PINK};
     padding: 32px;
     margin-bottom: 24px;
     border-radius: 16px;
+    border: none;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -53,6 +54,7 @@ export const ResumeSection = styled.div`
             font-weight: 700;
             font-size: 24px;
             line-height: 32px;
+            color: ${({ theme }) => theme.COLORS.WHITE};
         }
 
         div {
